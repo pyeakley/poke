@@ -1,0 +1,159 @@
+input[type=button], input[type=submit] {
+    border: 1px solid lightgray;
+    border-radius: 7px;
+    background-color: darkgrey;
+    color: #000036;
+    text-decoration: none;
+}
+
+input[type=button], input[type=text] {
+    border: 1px solid #000036;
+    border-radius: 7px;
+    background-color: lightgray;
+}
+
+body{
+    background-color: lightgray;
+}
+
+h1, label{
+    font-family: Montserrat, sans-serif;
+}
+
+p{
+    font-size: 20px;
+}
+
+h1{
+    text-align: center;
+    font-size: 220%;
+    font-weight: bold;
+    color: lightgray;
+}
+
+input {
+    text-align: center;
+}
+
+input[type=text] {
+    width: 310px;
+    height: 60px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+}
+
+input[type=submit]{
+    font-size: 100%;
+    width: 35%;
+    padding: 15px;
+}
+
+.box{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    background: #000036;
+    height: 85px;
+}
+
+.box2{
+    border: 1px solid #000036;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    background-color: #000036;
+}
+
+.box3{
+    border: 1px solid #000036;
+    border-radius: 7px;
+    margin-top: 40px;
+    background-color: #000036;
+    margin-bottom: 10px;
+}
+
+.footer{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid lightgray;
+    color: lightgray;
+    font-family: Montserrat, sans-serif;
+    text-align: center;
+    background: #000036;
+    height: 75px;
+}
+
+.bound{
+    height: 80px;
+}
+
+.ftext{
+    font-size: 10px;
+}
+
+.container{
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    margin-top: 17px;
+}
+
+#pokeInput{
+    background-color: lightgray;
+    color: #000036;
+}
+
+::placeholder{
+    color: darkgrey;
+}
+
+#pokeResults {
+    text-align: center;
+    border-radius: 7px;
+    color: lightgray;
+    font-family: Montserrat, sans-serif;
+    margin: 0 auto 20px;
+    padding: 0;
+}
+#head {
+    font-size: 34px;
+    padding-top: 10px;
+}
+img{
+    width: 60%;
+    border-radius: 7px;
+    border: 3px solid dimgrey;
+    background-color: lightgray;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#textbox {
+    padding-top: 15px;
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+
+#type {
+    font-size: 20px;
+    padding-top: 0;
+    margin-top: 0;
+}
+@media only screen and (min-width: 961px) {
+    #pokeResults {
+        width: 30%;
+    }
+}
