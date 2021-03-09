@@ -128,6 +128,16 @@ input[type=submit]{
     margin: 0 auto 20px;
     padding: 0;
 }
+
+#evoResults {
+    text-align: center;
+    border-radius: 7px;
+    font-family: Montserrat, sans-serif;
+    color: dimgrey;
+    margin: 50px auto 20px;
+    padding: 0;
+}
+
 #head {
     font-size: 34px;
     padding-top: 10px;
@@ -155,5 +165,9 @@ img{
 @media only screen and (min-width: 961px) {
     #pokeResults {
         width: 30%;
+    }
+
+    #evoResults {
+        width: 40%;
     }
 }

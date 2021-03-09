@@ -7,6 +7,7 @@ document.getElementById("pokeSubmit").addEventListener("click", function(event) 
 
     const url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1118"
 
+    // This is the first REST endpoint that converts the user's search into the ID number of the desired Pokemon
     fetch(url)
         .then(function(response) {
             return response.json();
@@ -20,9 +21,10 @@ document.getElementById("pokeSubmit").addEventListener("click", function(event) 
         nameArray[486] = "giratina";
         value = value.toLowerCase();
         let currPoke = nameArray.indexOf(value) + 1;
-        //console.log(nameArray);
+
         const url2 = "https://pokeapi.co/api/v2/pokemon/" + currPoke
 
+        // This is the second endpoint that using the current index found from the first to retrieve specific data about the Pokemon
         fetch(url2)
             .then(function(response) {
                 return response.json();
@@ -50,7 +52,7 @@ document.getElementById("pokeSubmit").addEventListener("click", function(event) 
                 }
 
                 results += "<p>Weight: " + weight + " pound(s)\<p>";
-                results += "</div>"
+
                 let styling = "#pokeResults{";
                 if(json.types[0].type.name === "normal"){
                     styling += "background-color: #A8A77A;";
@@ -101,6 +103,54 @@ document.getElementById("pokeSubmit").addEventListener("click", function(event) 
 
                 styling += "}";
 
+                // This is the third REST pont
+                let evolutions = ""
+                for(let i = 1; i < 475; i++){
+                    url3 = "https://pokeapi.co/api/v2/evolution-chain/" + i  + "/";
+
+                    fetch(url3)
+                        .then(function(response) {
+                            return response.json();
+                        }).then(function(json) {
+                            results += "<p>Weight: " + weight + " pound(s)\<p>";
+                            let evoArray = [];
+                            evoArray.push(json.chain.species.name);
+
+                            for(let i = 0; i < json.chain.evolves_to.length; i++){
+                               evoArray.push(json.chain.evolves_to[i].species.name)
+                                if(json.chain.evolves_to[i].evolves_to.length > 0){
+                                    evoArray.push(json.chain.evolves_to[i].evolves_to[0].species.name)
+                                }
+
+                            }
+                            if(evoArray.includes(value)){
+                                evolutions += "<p>Pokemon in Evolution Chain:\<p>";
+                                if(evoArray.length > 1){
+                                    evolutions += "<p>";
+                                    for(let j = 0; j < evoArray.length; j++) {
+                                        if (j !== evoArray.length - 2) {
+                                            evolutions += evoArray[j][0].toUpperCase() + evoArray[j].slice(1) + ", "
+                                        } else{
+                                            evolutions += evoArray[j][0].toUpperCase() + evoArray[j].slice(1) + ", and "
+                                        }
+                                    }
+                                    evolutions = evolutions.slice(0, -2)
+
+                                    if(evoArray.length === 2){
+                                        evolutions = evolutions.replace(',', '')
+                                    }
+
+                                    evolutions += "</p>"
+                                } else{
+                                    evolutions += "<p>None</p>"
+                                }
+                            }
+                        let evoStyling = "#evoResults{ border: 3px solid dimgrey; color: lightgray; background-color: #000036;}";
+                        document.getElementById("evoResults").innerHTML = evolutions;
+                        document.getElementById("evoStyle").innerHTML = evoStyling;
+                    });
+                }
+                results += "</div>"
                 document.getElementById("color").innerHTML = styling;
             document.getElementById("pokeResults").innerHTML = results;
         });
